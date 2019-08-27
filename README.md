@@ -3,7 +3,7 @@ Run `npm install`
 
 ## Build Angular Client
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. 
+Run `npm run build` to build the project. The build artifacts will be stored in the `dist/` directory. 
 
 ## Run project
 
