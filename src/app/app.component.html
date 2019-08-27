@@ -25,10 +25,10 @@
         <div  *ngIf="hasError('role')" class="invalid-feedback">{{getError('role')}}</div>
       </div>
       <div class="form-group">
-          <input name="favoriteJoke" id="favoriteJoke" [(ngModel)]="newEmployee.favoriteJoke" (click)="getJoke(newEmployee)" placeholder="Favorite Joke" class="form-control">        
+          <input name="favoriteJoke" id="favoriteJoke" [(ngModel)]="newEmployee.favoriteJoke" (click)="getJoke(newEmployee)" placeholder="Favorite Joke (click me)" class="form-control">        
       </div>
       <div class="form-group">
-          <input name="favoriteQuote" id="favoriteQuote" [(ngModel)]="newEmployee.favoriteQuote" (click)="getQuote(newEmployee)" placeholder="Favorite Quote" class="form-control">            
+          <input name="favoriteQuote" id="favoriteQuote" [(ngModel)]="newEmployee.favoriteQuote" (click)="getQuote(newEmployee)" placeholder="Favorite Quote (click me)" class="form-control">            
       </div>
       <div class="form-group">
         <div class="row">
@@ -59,10 +59,10 @@
       <div  *ngIf="hasError('role')" class="invalid-feedback">{{getError('role')}}</div>
     </div>
     <div class="form-group">
-        <input name="favoriteJoke" id="favoriteJoke" [(ngModel)]="editEmployee.favoriteJoke" (click)="getJoke(editEmployee)" placeholder="Favorite Joke" class="form-control">        
+        <input name="favoriteJoke" id="favoriteJoke" [(ngModel)]="editEmployee.favoriteJoke" (click)="getJoke(editEmployee)" placeholder="Favorite Joke (click me)" class="form-control">        
     </div>
     <div class="form-group">
-        <input name="favoriteQuote" id="favoriteQuote" [(ngModel)]="editEmployee.favoriteQuote" (click)="getQuote(editEmployee)" placeholder="Favorite Quote" class="form-control">            
+        <input name="favoriteQuote" id="favoriteQuote" [(ngModel)]="editEmployee.favoriteQuote" (click)="getQuote(editEmployee)" placeholder="Favorite Quote (click me)" class="form-control">            
     </div>
     <div class="form-group">
       <div class="row">
