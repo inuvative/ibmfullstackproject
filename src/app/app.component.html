@@ -1,0 +1,112 @@
+<div class="row">
+  <div class="col-md-2">
+  </div>
+  <div class="col-md-8">
+    <button *ngIf="!adding && !editing" type="submit" class="btn btn-primary" (click)="adding=true;clearMessages()">Add</button>
+    <form *ngIf="adding">
+      <div class="form-group">
+        <input type="text" name="firstName" id="firstName" [(ngModel)]="newEmployee.firstName" placeholder="First Name" class="form-control" 
+        [ngClass]="{'is-invalid' : hasError('firstName')}">
+        <div *ngIf="hasError('firstName')" class="invalid-feedback">{{getError('firstName')}}</div>
+      </div>
+      <div class="form-group">
+        <input name="lastName" id="lastName" [(ngModel)]="newEmployee.lastName" placeholder="Last Name" class="form-control"
+        [ngClass]="{'is-invalid' : hasError('lastName') }">
+        <div *ngIf="hasError('lastName')" class="invalid-feedback">{{getError('lastName')}}</div>
+      </div>
+      <div class="form-group">
+        <input name="hireDate" id="hireDate" [(ngModel)]="newEmployee.hireDate" placeholder="Hire Date (YYYY-MM-DD)" class="form-control"
+        [ngClass]="{'is-invalid' : hasError('hireDate') }">
+        <div *ngIf="hasError('hireDate')" class="invalid-feedback">{{getError('hireDate')}}</div>
+      </div>
+      <div class="form-group">
+        <input name="role" id="role" [(ngModel)]="newEmployee.role" placeholder="Role" class="form-control"
+        [ngClass]="{'is-invalid' : hasError('role') }">
+        <div  *ngIf="hasError('role')" class="invalid-feedback">{{getError('role')}}</div>
+      </div>
+      <div class="form-group">
+          <input name="favoriteJoke" id="favoriteJoke" [(ngModel)]="newEmployee.favoriteJoke" (click)="getJoke(newEmployee)" placeholder="Favorite Joke" class="form-control">        
+      </div>
+      <div class="form-group">
+          <input name="favoriteQuote" id="favoriteQuote" [(ngModel)]="newEmployee.favoriteQuote" (click)="getQuote(newEmployee)" placeholder="Favorite Quote" class="form-control">            
+      </div>
+      <div class="form-group">
+        <div class="row">
+            <button type="submit" class="btn btn-primary" (click)="create()">Create</button>
+            <button class="btn btn-primary" (click)="adding=false;clearMessages()">Cancel</button>    
+        </div>
+      </div>
+    </form>
+  <form *ngIf="editing">
+    <div class="form-group">
+      <input type="text" name="firstName" id="firstName" [(ngModel)]="editEmployee.firstName" placeholder="First Name" class="form-control"
+      [ngClass]="{'is-invalid' : hasError('firstName')}">
+      <div *ngIf="hasError('firstName')" class="invalid-feedback">{{getError('firstName')}}</div>
+    </div>
+    <div class="form-group">
+      <input name="lastName" id="lastName" [(ngModel)]="editEmployee.lastName" placeholder="Last Name" class="form-control"
+      [ngClass]="{'is-invalid' : hasError('lastName') }" id="lastName" id="lastName">
+      <div *ngIf="hasError('lastName')" class="invalid-feedback">{{getError('lastName')}}</div>
+    </div>
+    <div class="form-group">
+      <input name="hireDate" id="hireDate" [(ngModel)]="editEmployee.hireDate" placeholder="Hire Date (YYYY-MM-DD)" class="form-control"
+      [ngClass]="{'is-invalid' : hasError('hireDate') }" id="hireDate">
+      <div *ngIf="hasError('hireDate')" class="invalid-feedback">{{getError('hireDate')}}</div>
+    </div>
+    <div class="form-group">
+      <input name="role" id="role" [(ngModel)]="editEmployee.role" placeholder="Role" class="form-control"
+      [ngClass]="{'is-invalid' : hasError('role') }" id="role">
+      <div  *ngIf="hasError('role')" class="invalid-feedback">{{getError('role')}}</div>
+    </div>
+    <div class="form-group">
+        <input name="favoriteJoke" id="favoriteJoke" [(ngModel)]="editEmployee.favoriteJoke" (click)="getJoke(editEmployee)" placeholder="Favorite Joke" class="form-control">        
+    </div>
+    <div class="form-group">
+        <input name="favoriteQuote" id="favoriteQuote" [(ngModel)]="editEmployee.favoriteQuote" (click)="getQuote(editEmployee)" placeholder="Favorite Quote" class="form-control">            
+    </div>
+    <div class="form-group">
+      <div class="row">
+          <button type="submit" class="btn btn-primary" (click)="doneEdit(editEmployee)">Save</button>
+          <button class="btn btn-primary" (click)="editing=false;clearMessages()">Cancel</button>    
+      </div>
+    </div>
+  </form>
+  <div class="alert alert-danger" *ngIf="errorMessage">{{errorMessage}}</div>
+    <div class="employees" *ngIf="employeesList">
+      <table class="table">
+        <thead class="h">
+          <tr class="h">
+            <th class="h">First Name</th>
+            <th class="h">Last Name</th>
+            <th class="h">Hire Date</th>
+            <th class="h">Role</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="employee" *ngFor="let employee of employeesList">
+
+            <ng-container>
+              <td>{{employee.firstName}}</td>
+              <td>{{employee.lastName}}</td>
+              <td>{{employee.hireDate | date}}</td>
+              <td>{{employee.role}}</td>
+            </ng-container>
+            <td class="o">
+              <button class="btn btn-primary" [disabled]="adding||editing" (click)="startEdit(employee)">
+                  <i  class="fa fa-pencil"></i>
+                </button>
+              <button class="btn btn-danger" (click)="delete(employee)">
+                  <i  class="fa fa-trash"></i>
+                </button>
+            </td>
+
+          </tr>
+        </tbody>
+      </table>
+      <div *ngIf="deleteMessage">{{deleteMessage}}</div>
+    </div>
+  </div>
+  <div class="col-md-2">
+    
+  </div>
+</div>
