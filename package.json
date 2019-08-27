@@ -6,7 +6,7 @@
   "scripts": {
     "ng": "ng",
     "start": "node app.js",
-    "build": "ng build",
+    "build": "ng build --output-path dist",
     "ng-test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
